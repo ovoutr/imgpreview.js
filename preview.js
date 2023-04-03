@@ -23,8 +23,8 @@ previewBox.appendChild(closeButton);
 // 循环所有图片元素，给它们添加点击事件处理函数
 images.forEach((image) => {
   image.onclick = () => {
-    // 设置预览框中图片的src属性为当前点击的图片的src属性
-    previewBox.innerHTML = `<img src="${image.src}" alt="preview image">`;
+    // 设置预览框中图片的src属性为当前点击的图片的src属性，并使用DOMPurify来消毒
+    previewBox.innerHTML = `<img src="${DOMPurify.sanitize(image.src)}" alt="preview image">`;
 
     // 显示预览框
     previewBox.style.display = 'flex';
